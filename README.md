@@ -1,3 +1,9 @@
+A Docker image with Rails 5.2 and Postgres 11.
+
+```
+git clone git@github.com:amedrz/docker-rails-5-2.git my-rails-5-2-app
+```
+
 ## Build the project
 
 you can generate a Rails 5.2 skeleton app using:
@@ -35,7 +41,6 @@ development:
   <<: *default
   database: <%= "#{ENV['POSTGRES_DB']}_dev" %>
 
-
 test:
   <<: *default
   database: <%= "#{ENV['POSTGRES_DB']}_test" %>
@@ -47,16 +52,35 @@ You can now boot the app with:
 docker-compose up
 ```
 
-If all’s well, you should see some PostgreSQL output.
+If all's well, you should see some PostgreSQL output.
 
-```
+```bash
 ^C
 ```
 
 Now you need to create the database:
 
-```
+```bash
 docker-compose run --rm web bundle exec rails db:create
 ```
 
-Open the container from VSCode.
+Open the container in VSCode (Remote-Containers extension).
+
+Open a terminal window and run:
+
+```bash
+bundle exec rails s -p 3000 -b '0.0.0.0'
+```
+
+## Optional steps
+
+Install rubocop
+
+```ruby
+group :development do
+  # ...
+  gem 'rubocop', '~> 1.0'
+end
+```
+
+Don't forget to rebuild container afterwards.
