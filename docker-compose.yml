@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: database
+      POSTGRES_DB: demo_development
+      POSTGRES_USER: demo_development
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - database
+
+  database:
+    image: postgres:11
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+volumes:
+  db_data:
