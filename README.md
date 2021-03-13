@@ -15,11 +15,18 @@ docker-compose run --no-deps web rails new . --force --database=postgresql
 First, Compose builds the image for the web service using the Dockerfile. The
 `--no-deps` tells Compose not to start linked services. Then it runs rails new
 inside a new container, using that image. Once it’s done, you should have
-generated a fresh app.
+generated a fresh app. Notice this command overwrites this README as well.
 
-Now that you've got a new Gemfile, you need to build the image again.
-(This, and changes to the Gemfile or the Dockerfile, should be the only
-times you’ll need to rebuild.)
+Add rubocop:
+
+```ruby
+group :development do
+  # ...
+  gem 'rubocop', '~> 1.0'
+end
+```
+
+Now that you've got a new Gemfile, you need to build the image again:
 
 ```bash
 docker-compose build
@@ -46,7 +53,7 @@ test:
   database: <%= "#{ENV['POSTGRES_DB']}_test" %>
 ```
 
-You can now boot the app with:
+You can now create the database service:
 
 ```bash
 docker-compose up --no-start
@@ -60,21 +67,4 @@ rails db:create
 
 ```bash
 bundle exec rails s -p 3000 -b '0.0.0.0'
-```
-
-## Optional steps
-
-Install rubocop
-
-```ruby
-group :development do
-  # ...
-  gem 'rubocop', '~> 1.0'
-end
-```
-
-Run bundle install:
-
-```
-bundle
 ```
