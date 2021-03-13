@@ -1,0 +1,1 @@
+CREATE USER demo_user SUPERUSER;
