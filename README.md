@@ -27,7 +27,7 @@ docker-compose build
 
 ### Connect the database
 
-Replace the contents of config/database.yml with the following:
+Replace the contents of `config/database.yml` with:
 
 ```yaml
 default: &default
@@ -49,24 +49,14 @@ test:
 You can now boot the app with:
 
 ```bash
-docker-compose up
+docker-compose up --no-start
 ```
 
-If all's well, you should see some PostgreSQL output.
+Open the container in VSCode (Remote-Containers extension). Open a terminal window and run:
 
 ```bash
-^C
+rails db:create
 ```
-
-Now you need to create the database:
-
-```bash
-docker-compose run --rm web bundle exec rails db:create
-```
-
-Open the container in VSCode (Remote-Containers extension).
-
-Open a terminal window and run:
 
 ```bash
 bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -83,4 +73,8 @@ group :development do
 end
 ```
 
-Don't forget to rebuild container afterwards.
+Run bundle install:
+
+```
+bundle
+```
