@@ -59,11 +59,12 @@ You can now create the database service:
 docker-compose up --no-start
 ```
 
-Open the container in VSCode (Remote-Containers extension). Open a terminal window and run:
-
-```bash
-rails db:create
+And create app's database:
 ```
+docker-compose run --rm web bundle exec rails db:create
+```
+
+Open the container in VSCode (Remote-Containers extension) and from a terminal window:
 
 ```bash
 bundle exec rails s -p 3000 -b '0.0.0.0'
