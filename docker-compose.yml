@@ -7,8 +7,8 @@ services:
     environment:
       RAILS_ENV: development
       DATABASE_HOST: database
-      POSTGRES_DB: demo_development
-      POSTGRES_USER: demo_development
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo_user
     command: 'tail -f /dev/null'
     volumes:
       - ./:/usr/src/app
