@@ -22,7 +22,7 @@ RUN apk add --update --no-cache \
       pkgconfig \
       nodejs \
       postgresql-dev \
-      tzdata \
+      tzdata
 
 COPY Gemfile* /usr/src/app/
 
