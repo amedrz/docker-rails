@@ -1,5 +1,11 @@
+AllCops:
+  NewCops: disable
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Naming/VariableNumber:
   Enabled: false
