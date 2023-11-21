@@ -9,7 +9,7 @@ git clone git@github.com:amedrz/docker-rails.git my-rails-app
 you can generate a Rails 7 skeleton app using:
 
 ```bash
-docker-compose run --no-deps web rails new . --force --database=postgresql
+docker-compose run --no-deps web rails new . --skip-docker --force --database=postgresql
 ```
 
 First, Compose builds the image for the web service using the Dockerfile. The
@@ -17,7 +17,7 @@ First, Compose builds the image for the web service using the Dockerfile. The
 inside a new container, using that image. Once it’s done, you should have
 generated a fresh app.
 
-Note this command overwrites this README, the Dockerfile and Gemfile. That's ok.
+Note this command overwrites this README and Gemfile. That's ok.
 
 Add rubocop:
 
