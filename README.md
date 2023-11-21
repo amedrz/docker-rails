@@ -1,12 +1,12 @@
-A Docker image with Rails 5.2 and Postgres 11.
+A Docker image with Rails 7 and Postgres 11.
 
 ```
-git clone git@github.com:amedrz/docker-rails-5-2.git my-rails-5-2-app
+git clone git@github.com:amedrz/docker-rails.git my-rails-app
 ```
 
 ## Build the project
 
-you can generate a Rails 5.2 skeleton app using:
+you can generate a Rails 7 skeleton app using:
 
 ```bash
 docker-compose run --no-deps web rails new . --force --database=postgresql
@@ -15,7 +15,9 @@ docker-compose run --no-deps web rails new . --force --database=postgresql
 First, Compose builds the image for the web service using the Dockerfile. The
 `--no-deps` tells Compose not to start linked services. Then it runs rails new
 inside a new container, using that image. Once it’s done, you should have
-generated a fresh app. Notice this command overwrites this README as well.
+generated a fresh app.
+
+Note this command overwrites this README, the Dockerfile and Gemfile. That's ok.
 
 Add rubocop:
 
