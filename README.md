@@ -13,7 +13,7 @@ code .
 
 Using the [Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/containers), choose _Repoen in Container_.
 
-Once it's running from the container, finish the setup
+Once it's running from the container, finish the setup from a local terminal
 
 ```bash
 rails db:create
@@ -31,10 +31,4 @@ You may want to reset `git` for a clean history and new target repository
 ```bash
 rm -rf .git
 git init .
-```
-
-Open the container in VSCode (Remote-Containers extension) and from a terminal window:
-
-```bash
-bundle exec rails s -p 3000 -b '0.0.0.0'
 ```
