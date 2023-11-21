@@ -1,69 +1,36 @@
-A Docker image with Rails 7 and Postgres 11.
+### A Docker project with Rails 7 and Postgres 11
 
 ```
 git clone git@github.com:amedrz/docker-rails.git my-rails-app
 ```
 
-## Build the project
-
-you can generate a Rails 7 skeleton app using:
+Open the project in VSCode
 
 ```bash
-docker-compose run --no-deps web rails new . --skip-docker --force --database=postgresql
+cd my-rails-app
+code .
 ```
 
-First, Compose builds the image for the web service using the Dockerfile. The
-`--no-deps` tells Compose not to start linked services. Then it runs rails new
-inside a new container, using that image. Once it’s done, you should have
-generated a fresh app.
+Using the [Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/containers), choose _Repoen in Container_.
 
-Note this command overwrites this README and Gemfile. That's ok.
-
-Add rubocop:
-
-```ruby
-group :development do
-  # ...
-  gem 'rubocop', '~> 1.0'
-end
-```
-
-Now that you've got a new Gemfile, you need to build the image again:
+Once it's running from the container, finish the setup
 
 ```bash
-docker-compose build
+rails db:create
 ```
 
-### Connect the database
-
-Replace the contents of `config/database.yml` with:
-
-```yaml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV['DATABASE_HOST'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  pool: 5
-
-development:
-  <<: *default
-  database: <%= "#{ENV['POSTGRES_DB']}_dev" %>
-
-test:
-  <<: *default
-  database: <%= "#{ENV['POSTGRES_DB']}_test" %>
-```
-
-You can now create the database service:
+And run the server
 
 ```bash
-docker-compose up --no-start
+rails s -p 3000 -b '0.0.0.0'
 ```
 
-And create app's database:
-```
-docker-compose run --rm web bundle exec rails db:create
+## Cleanup
+
+You may want to reset `git` for a clean history and new target repository
+```bash
+rm -rf .git
+git init .
 ```
 
 Open the container in VSCode (Remote-Containers extension) and from a terminal window:
