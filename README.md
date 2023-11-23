@@ -38,7 +38,8 @@ git init .
 From time to time you may want to upgrade either Ruby or Rails versions. To do so, remove all files but:
 
 - `Gemfile`
-- `Dockerimage`
+- `Dockerfile`
+- `docker-compose.yml`
 - `init.sql`
 - `.devcontainer`
 
