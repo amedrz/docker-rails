@@ -59,6 +59,7 @@ rails s -p 3000 -b '0.0.0.0'
 You may want to reset `git` for a clean history and new target repository
 ```bash
 rm -rf .git
+rm init.sql
 git init .
 ```
 
