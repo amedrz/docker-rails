@@ -13,7 +13,36 @@ code .
 
 Using the [Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/containers), choose _Repoen in Container_.
 
-Once it's running from the container, finish the setup from a local terminal
+Once it's running from the container, finish the setup from within.
+
+Add rubocop to the `Gemfile`
+
+```ruby
+group :development do
+  gem "rubocop"
+end
+```
+
+Replace content from `config/database.yml`
+
+```erb
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: <%= "#{ENV['POSTGRES_DB']}_dev" %>
+
+test:
+  <<: *default
+  database: <%= "#{ENV['POSTGRES_DB']}_test" %>
+```
+
+Create the database
 
 ```bash
 rails db:create
