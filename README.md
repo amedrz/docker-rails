@@ -15,14 +15,6 @@ Using the [Dev Containers extension](https://code.visualstudio.com/docs/devconta
 
 Once it's running from the container, finish the setup from within.
 
-Add rubocop to the `Gemfile`
-
-```ruby
-group :development do
-  gem "rubocop"
-end
-```
-
 Replace content from `config/database.yml`
 
 ```erb
