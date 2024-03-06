@@ -15,25 +15,6 @@ Using the [Dev Containers extension](https://code.visualstudio.com/docs/devconta
 
 Once it's running from the container, finish the setup from within.
 
-Replace content from `config/database.yml`
-
-```erb
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV['DATABASE_HOST'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  pool: 5
-
-development:
-  <<: *default
-  database: <%= "#{ENV['POSTGRES_DB']}_dev" %>
-
-test:
-  <<: *default
-  database: <%= "#{ENV['POSTGRES_DB']}_test" %>
-```
-
 Create the database
 
 ```bash
